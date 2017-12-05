@@ -9,3 +9,5 @@ services:
     ports:
     - "80"
     network_mode: bridge
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
