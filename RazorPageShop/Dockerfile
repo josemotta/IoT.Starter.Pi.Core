@@ -10,9 +10,10 @@ FROM microsoft/aspnetcore-build:2.0 AS build
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
 WORKDIR /src
 COPY *.sln ./
+COPY *.dcproj ./
 COPY RazorPageShop/RazorPageShop.csproj RazorPageShop/
 COPY RazorPageShop.Core/RazorPageShop.Core.csproj RazorPageShop.Core/
-RUN dotnet restore
+RUN dotnet restore RazorPageShop
 COPY . .
 WORKDIR /src/RazorPageShop
 #RUN dotnet build -c Release -r linux-arm -o /app
