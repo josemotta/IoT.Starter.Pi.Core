@@ -2,21 +2,21 @@ version: '3'
 
 services:
   io.swagger:
-    image: io.swagger
+    image: josemottalopes/home-web
     build:
       context: .
-      dockerfile: src/IO.Swagger/Dockerfile
+      dockerfile: src/IO.Swagger/Dockerfile.pi
     ports:
-    - "5010:5010"
+    - "5010"
     network_mode: bridge
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
 
   home.ui:
-    image: home.ui
+    image: josemottalopes/home-ui
     build:
       context: .
-      dockerfile: src/Home.UI/Dockerfile
+      dockerfile: src/Home.UI/Dockerfile.pi
     ports:
     - "80"
     network_mode: bridge
