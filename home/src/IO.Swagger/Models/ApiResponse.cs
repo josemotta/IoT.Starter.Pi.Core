@@ -27,29 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// 
     /// </summary>
     [DataContract]
     public partial class ApiResponse :  IEquatable<ApiResponse>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiResponse" /> class.
-        /// </summary>
-        /// <param name="Code">Code.</param>
-        /// <param name="Message">Message.</param>
-        public ApiResponse(int? Code = null, string Message = null)
-        {
-            this.Code = Code;
-            this.Message = Message;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets Code
         /// </summary>
@@ -61,7 +50,6 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="message")]
         public string Message { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,8 +83,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((ApiResponse)obj);
+            return obj.GetType() == GetType() && Equals((ApiResponse)obj);
         }
 
         /// <summary>
@@ -106,20 +93,19 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(ApiResponse other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Code == other.Code ||
-                    this.Code != null &&
-                    this.Code.Equals(other.Code)
+                    Code == other.Code ||
+                    Code != null &&
+                    Code.Equals(other.Code)
                 ) && 
                 (
-                    this.Message == other.Message ||
-                    this.Message != null &&
-                    this.Message.Equals(other.Message)
+                    Message == other.Message ||
+                    Message != null &&
+                    Message.Equals(other.Message)
                 );
         }
 
@@ -129,20 +115,20 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Code != null)
-                    hash = hash * 59 + this.Code.GetHashCode();
-                if (this.Message != null)
-                    hash = hash * 59 + this.Message.GetHashCode();
-                return hash;
+                    if (Code != null)
+                    hashCode = hashCode * 59 + Code.GetHashCode();
+                    if (Message != null)
+                    hashCode = hashCode * 59 + Message.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(ApiResponse left, ApiResponse right)
         {
@@ -154,7 +140,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }

@@ -22,15 +22,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Primitives;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
-using Swashbuckle.SwaggerGen.Annotations;
+using IO.Swagger.Attributes;
 using IO.Swagger.Models;
 
 namespace IO.Swagger.Controllers
@@ -40,7 +42,6 @@ namespace IO.Swagger.Controllers
     /// </summary>
     public class EnvironmentApiController : Controller
     { 
-
         /// <summary>
         /// 
         /// </summary>
@@ -49,8 +50,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">the forecast</response>
         [HttpGet]
         [Route("/josemottalopes/home-api/1.0.1/temperature/forecast/{days}")]
+        [ValidateModelState]
         [SwaggerOperation("GetForecast")]
-        [SwaggerResponse(200, type: typeof(ForecastResponse))]
+        [SwaggerResponse(200, typeof(ForecastResponse), "the forecast")]
         public virtual IActionResult GetForecast([FromRoute]int? days)
         { 
             string exampleJson = null;
@@ -61,7 +63,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -70,8 +71,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">heater state</response>
         [HttpGet]
         [Route("/josemottalopes/home-api/1.0.1/temperature/{zoneId}/heater")]
+        [ValidateModelState]
         [SwaggerOperation("GetHeaterState")]
-        [SwaggerResponse(200, type: typeof(HeaterState))]
+        [SwaggerResponse(200, typeof(HeaterState), "heater state")]
         public virtual IActionResult GetHeaterState([FromRoute]string zoneId)
         { 
             string exampleJson = null;
@@ -82,7 +84,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -91,8 +92,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Zone temperature</response>
         [HttpGet]
         [Route("/josemottalopes/home-api/1.0.1/temperature/{zoneId}")]
+        [ValidateModelState]
         [SwaggerOperation("GetZoneTemperature")]
-        [SwaggerResponse(200, type: typeof(TemperatueZoneStatus))]
+        [SwaggerResponse(200, typeof(TemperatueZoneStatus), "Zone temperature")]
         public virtual IActionResult GetZoneTemperature([FromRoute]string zoneId)
         { 
             string exampleJson = null;
@@ -103,7 +105,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -113,8 +114,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Status of the operation</response>
         [HttpPost]
         [Route("/josemottalopes/home-api/1.0.1/temperature/{zoneId}/heater/{state}")]
+        [ValidateModelState]
         [SwaggerOperation("SetHeaterState")]
-        [SwaggerResponse(200, type: typeof(ApiResponse))]
+        [SwaggerResponse(200, typeof(ApiResponse), "Status of the operation")]
         public virtual IActionResult SetHeaterState([FromRoute]string zoneId, [FromRoute]string state)
         { 
             string exampleJson = null;
@@ -125,7 +127,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -133,8 +134,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">ok</response>
         [HttpGet]
         [Route("/josemottalopes/home-api/1.0.1/temperature")]
+        [ValidateModelState]
         [SwaggerOperation("TemperatureSummary")]
-        [SwaggerResponse(200, type: typeof(TemperatureSummary))]
+        [SwaggerResponse(200, typeof(TemperatureSummary), "ok")]
         public virtual IActionResult TemperatureSummary()
         { 
             string exampleJson = null;
