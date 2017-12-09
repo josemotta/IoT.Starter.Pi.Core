@@ -27,35 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// 
     /// </summary>
     [DataContract]
     public partial class LightingZone :  IEquatable<LightingZone>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LightingZone" /> class.
-        /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="Name">Name.</param>
-        /// <param name="DeviceId">DeviceId.</param>
-        /// <param name="DeviceType">DeviceType.</param>
-        /// <param name="Zone">Zone.</param>
-        public LightingZone(string Id = null, string Name = null, int? DeviceId = null, string DeviceType = null, string Zone = null)
-        {
-            this.Id = Id;
-            this.Name = Name;
-            this.DeviceId = DeviceId;
-            this.DeviceType = DeviceType;
-            this.Zone = Zone;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
@@ -73,19 +56,35 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="deviceId")]
         public int? DeviceId { get; set; }
+        /// <summary>
+        /// Gets or Sets DeviceType
+        /// </summary>
+        public enum DeviceTypeEnum
+        { 
+            /// <summary>
+            /// Enum DimmerEnum for "dimmer"
+            /// </summary>
+            [EnumMember(Value = "dimmer")]
+            DimmerEnum = 1,
+            
+            /// <summary>
+            /// Enum SwitchEnum for "switch"
+            /// </summary>
+            [EnumMember(Value = "switch")]
+            SwitchEnum = 2
+        }
 
         /// <summary>
         /// Gets or Sets DeviceType
         /// </summary>
         [DataMember(Name="deviceType")]
-        public string DeviceType { get; set; }
+        public DeviceTypeEnum? DeviceType { get; set; }
 
         /// <summary>
         /// Gets or Sets Zone
         /// </summary>
         [DataMember(Name="zone")]
         public string Zone { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -122,8 +121,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LightingZone)obj);
+            return obj.GetType() == GetType() && Equals((LightingZone)obj);
         }
 
         /// <summary>
@@ -133,35 +131,34 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(LightingZone other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    Id == other.Id ||
+                    Id != null &&
+                    Id.Equals(other.Id)
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.Equals(other.Name)
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
                 ) && 
                 (
-                    this.DeviceId == other.DeviceId ||
-                    this.DeviceId != null &&
-                    this.DeviceId.Equals(other.DeviceId)
+                    DeviceId == other.DeviceId ||
+                    DeviceId != null &&
+                    DeviceId.Equals(other.DeviceId)
                 ) && 
                 (
-                    this.DeviceType == other.DeviceType ||
-                    this.DeviceType != null &&
-                    this.DeviceType.Equals(other.DeviceType)
+                    DeviceType == other.DeviceType ||
+                    DeviceType != null &&
+                    DeviceType.Equals(other.DeviceType)
                 ) && 
                 (
-                    this.Zone == other.Zone ||
-                    this.Zone != null &&
-                    this.Zone.Equals(other.Zone)
+                    Zone == other.Zone ||
+                    Zone != null &&
+                    Zone.Equals(other.Zone)
                 );
         }
 
@@ -171,26 +168,26 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
-                if (this.DeviceId != null)
-                    hash = hash * 59 + this.DeviceId.GetHashCode();
-                if (this.DeviceType != null)
-                    hash = hash * 59 + this.DeviceType.GetHashCode();
-                if (this.Zone != null)
-                    hash = hash * 59 + this.Zone.GetHashCode();
-                return hash;
+                    if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                    if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                    if (DeviceId != null)
+                    hashCode = hashCode * 59 + DeviceId.GetHashCode();
+                    if (DeviceType != null)
+                    hashCode = hashCode * 59 + DeviceType.GetHashCode();
+                    if (Zone != null)
+                    hashCode = hashCode * 59 + Zone.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(LightingZone left, LightingZone right)
         {
@@ -202,7 +199,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }

@@ -27,29 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// 
     /// </summary>
     [DataContract]
     public partial class ForecastResponse :  IEquatable<ForecastResponse>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ForecastResponse" /> class.
-        /// </summary>
-        /// <param name="City">City.</param>
-        /// <param name="Values">Values.</param>
-        public ForecastResponse(City City = null, List<Forecast> Values = null)
-        {
-            this.City = City;
-            this.Values = Values;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets City
         /// </summary>
@@ -61,7 +50,6 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="values")]
         public List<Forecast> Values { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,8 +83,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((ForecastResponse)obj);
+            return obj.GetType() == GetType() && Equals((ForecastResponse)obj);
         }
 
         /// <summary>
@@ -106,20 +93,19 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(ForecastResponse other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.City == other.City ||
-                    this.City != null &&
-                    this.City.Equals(other.City)
+                    City == other.City ||
+                    City != null &&
+                    City.Equals(other.City)
                 ) && 
                 (
-                    this.Values == other.Values ||
-                    this.Values != null &&
-                    this.Values.SequenceEqual(other.Values)
+                    Values == other.Values ||
+                    Values != null &&
+                    Values.SequenceEqual(other.Values)
                 );
         }
 
@@ -129,20 +115,20 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.City != null)
-                    hash = hash * 59 + this.City.GetHashCode();
-                if (this.Values != null)
-                    hash = hash * 59 + this.Values.GetHashCode();
-                return hash;
+                    if (City != null)
+                    hashCode = hashCode * 59 + City.GetHashCode();
+                    if (Values != null)
+                    hashCode = hashCode * 59 + Values.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(ForecastResponse left, ForecastResponse right)
         {
@@ -154,7 +140,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }

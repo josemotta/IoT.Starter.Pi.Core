@@ -22,15 +22,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Primitives;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
-using Swashbuckle.SwaggerGen.Annotations;
+using IO.Swagger.Attributes;
 using IO.Swagger.Models;
 
 namespace IO.Swagger.Controllers
@@ -40,7 +42,6 @@ namespace IO.Swagger.Controllers
     /// </summary>
     public class DeviceApiController : Controller
     { 
-
         /// <summary>
         /// 
         /// </summary>
@@ -50,8 +51,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">All the devices</response>
         [HttpGet]
         [Route("/josemottalopes/home-api/1.0.1/devices")]
+        [ValidateModelState]
         [SwaggerOperation("GetDevices")]
-        [SwaggerResponse(200, type: typeof(List<string>))]
+        [SwaggerResponse(200, typeof(List<string>), "All the devices")]
         public virtual IActionResult GetDevices([FromQuery]int? skip, [FromQuery]int? limit)
         { 
             string exampleJson = null;
@@ -62,7 +64,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -71,6 +72,7 @@ namespace IO.Swagger.Controllers
         /// <response code="200">successfully registered device</response>
         [HttpPost]
         [Route("/josemottalopes/home-api/1.0.1/devices")]
+        [ValidateModelState]
         [SwaggerOperation("Register")]
         public virtual void Register([FromBody]DeviceRegistrationInfo device)
         { 

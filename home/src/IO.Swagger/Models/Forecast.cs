@@ -27,39 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// 
     /// </summary>
     [DataContract]
     public partial class Forecast :  IEquatable<Forecast>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Forecast" /> class.
-        /// </summary>
-        /// <param name="Date">Date.</param>
-        /// <param name="Pressure">Pressure.</param>
-        /// <param name="Humidity">Humidity.</param>
-        /// <param name="WindSpeed">WindSpeed.</param>
-        /// <param name="Clouds">Clouds.</param>
-        /// <param name="Temperature">Temperature.</param>
-        /// <param name="Weather">Weather.</param>
-        public Forecast(DateTime? Date = null, double? Pressure = null, int? Humidity = null, double? WindSpeed = null, int? Clouds = null, ForecastTemperature Temperature = null, WeatherForecast Weather = null)
-        {
-            this.Date = Date;
-            this.Pressure = Pressure;
-            this.Humidity = Humidity;
-            this.WindSpeed = WindSpeed;
-            this.Clouds = Clouds;
-            this.Temperature = Temperature;
-            this.Weather = Weather;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets Date
         /// </summary>
@@ -102,7 +81,6 @@ namespace IO.Swagger.Models
         [DataMember(Name="weather")]
         public WeatherForecast Weather { get; set; }
 
-
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -140,8 +118,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((Forecast)obj);
+            return obj.GetType() == GetType() && Equals((Forecast)obj);
         }
 
         /// <summary>
@@ -151,45 +128,44 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(Forecast other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Date == other.Date ||
-                    this.Date != null &&
-                    this.Date.Equals(other.Date)
+                    Date == other.Date ||
+                    Date != null &&
+                    Date.Equals(other.Date)
                 ) && 
                 (
-                    this.Pressure == other.Pressure ||
-                    this.Pressure != null &&
-                    this.Pressure.Equals(other.Pressure)
+                    Pressure == other.Pressure ||
+                    Pressure != null &&
+                    Pressure.Equals(other.Pressure)
                 ) && 
                 (
-                    this.Humidity == other.Humidity ||
-                    this.Humidity != null &&
-                    this.Humidity.Equals(other.Humidity)
+                    Humidity == other.Humidity ||
+                    Humidity != null &&
+                    Humidity.Equals(other.Humidity)
                 ) && 
                 (
-                    this.WindSpeed == other.WindSpeed ||
-                    this.WindSpeed != null &&
-                    this.WindSpeed.Equals(other.WindSpeed)
+                    WindSpeed == other.WindSpeed ||
+                    WindSpeed != null &&
+                    WindSpeed.Equals(other.WindSpeed)
                 ) && 
                 (
-                    this.Clouds == other.Clouds ||
-                    this.Clouds != null &&
-                    this.Clouds.Equals(other.Clouds)
+                    Clouds == other.Clouds ||
+                    Clouds != null &&
+                    Clouds.Equals(other.Clouds)
                 ) && 
                 (
-                    this.Temperature == other.Temperature ||
-                    this.Temperature != null &&
-                    this.Temperature.Equals(other.Temperature)
+                    Temperature == other.Temperature ||
+                    Temperature != null &&
+                    Temperature.Equals(other.Temperature)
                 ) && 
                 (
-                    this.Weather == other.Weather ||
-                    this.Weather != null &&
-                    this.Weather.Equals(other.Weather)
+                    Weather == other.Weather ||
+                    Weather != null &&
+                    Weather.Equals(other.Weather)
                 );
         }
 
@@ -199,30 +175,30 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Date != null)
-                    hash = hash * 59 + this.Date.GetHashCode();
-                if (this.Pressure != null)
-                    hash = hash * 59 + this.Pressure.GetHashCode();
-                if (this.Humidity != null)
-                    hash = hash * 59 + this.Humidity.GetHashCode();
-                if (this.WindSpeed != null)
-                    hash = hash * 59 + this.WindSpeed.GetHashCode();
-                if (this.Clouds != null)
-                    hash = hash * 59 + this.Clouds.GetHashCode();
-                if (this.Temperature != null)
-                    hash = hash * 59 + this.Temperature.GetHashCode();
-                if (this.Weather != null)
-                    hash = hash * 59 + this.Weather.GetHashCode();
-                return hash;
+                    if (Date != null)
+                    hashCode = hashCode * 59 + Date.GetHashCode();
+                    if (Pressure != null)
+                    hashCode = hashCode * 59 + Pressure.GetHashCode();
+                    if (Humidity != null)
+                    hashCode = hashCode * 59 + Humidity.GetHashCode();
+                    if (WindSpeed != null)
+                    hashCode = hashCode * 59 + WindSpeed.GetHashCode();
+                    if (Clouds != null)
+                    hashCode = hashCode * 59 + Clouds.GetHashCode();
+                    if (Temperature != null)
+                    hashCode = hashCode * 59 + Temperature.GetHashCode();
+                    if (Weather != null)
+                    hashCode = hashCode * 59 + Weather.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(Forecast left, Forecast right)
         {
@@ -234,7 +210,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }
