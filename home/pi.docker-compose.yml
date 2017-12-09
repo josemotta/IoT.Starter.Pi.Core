@@ -5,7 +5,7 @@ services:
     image: josemottalopes/home-web
     build:
       context: .
-      dockerfile: src/IO.Swagger/Dockerfile.pi
+      dockerfile: src/IO.Swagger/pi.Dockerfile
     ports:
     - "5010"
     network_mode: bridge
@@ -16,7 +16,7 @@ services:
     image: josemottalopes/home-ui
     build:
       context: .
-      dockerfile: src/Home.UI/Dockerfile.pi
+      dockerfile: src/Home.UI/pi.Dockerfile
     ports:
     - "80"
     network_mode: bridge
