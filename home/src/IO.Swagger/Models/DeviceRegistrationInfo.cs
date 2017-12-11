@@ -27,29 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// 
     /// </summary>
     [DataContract]
     public partial class DeviceRegistrationInfo :  IEquatable<DeviceRegistrationInfo>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DeviceRegistrationInfo" /> class.
-        /// </summary>
-        /// <param name="Uri">Uri.</param>
-        /// <param name="Id">Id.</param>
-        public DeviceRegistrationInfo(string Uri = null, Guid? Id = null)
-        {
-            this.Uri = Uri;
-            this.Id = Id;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets Uri
         /// </summary>
@@ -61,7 +50,6 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="id")]
         public Guid? Id { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,8 +83,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((DeviceRegistrationInfo)obj);
+            return obj.GetType() == GetType() && Equals((DeviceRegistrationInfo)obj);
         }
 
         /// <summary>
@@ -106,20 +93,19 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(DeviceRegistrationInfo other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Uri == other.Uri ||
-                    this.Uri != null &&
-                    this.Uri.Equals(other.Uri)
+                    Uri == other.Uri ||
+                    Uri != null &&
+                    Uri.Equals(other.Uri)
                 ) && 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    Id == other.Id ||
+                    Id != null &&
+                    Id.Equals(other.Id)
                 );
         }
 
@@ -129,20 +115,20 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Uri != null)
-                    hash = hash * 59 + this.Uri.GetHashCode();
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                return hash;
+                    if (Uri != null)
+                    hashCode = hashCode * 59 + Uri.GetHashCode();
+                    if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(DeviceRegistrationInfo left, DeviceRegistrationInfo right)
         {
@@ -154,7 +140,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }

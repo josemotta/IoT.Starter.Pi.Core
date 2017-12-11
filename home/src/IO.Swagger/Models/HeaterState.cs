@@ -27,29 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// 
     /// </summary>
     [DataContract]
     public partial class HeaterState :  IEquatable<HeaterState>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="HeaterState" /> class.
-        /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="State">State.</param>
-        public HeaterState(string Id = null, string State = null)
-        {
-            this.Id = Id;
-            this.State = State;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
@@ -61,7 +50,6 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="state")]
         public string State { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,8 +83,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((HeaterState)obj);
+            return obj.GetType() == GetType() && Equals((HeaterState)obj);
         }
 
         /// <summary>
@@ -106,20 +93,19 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(HeaterState other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    Id == other.Id ||
+                    Id != null &&
+                    Id.Equals(other.Id)
                 ) && 
                 (
-                    this.State == other.State ||
-                    this.State != null &&
-                    this.State.Equals(other.State)
+                    State == other.State ||
+                    State != null &&
+                    State.Equals(other.State)
                 );
         }
 
@@ -129,20 +115,20 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                if (this.State != null)
-                    hash = hash * 59 + this.State.GetHashCode();
-                return hash;
+                    if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                    if (State != null)
+                    hashCode = hashCode * 59 + State.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(HeaterState left, HeaterState right)
         {
@@ -154,7 +140,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }

@@ -27,33 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// the status of the lighting zone.
     /// </summary>
     [DataContract]
     public partial class LightingZoneStatus :  IEquatable<LightingZoneStatus>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LightingZoneStatus" /> class.
-        /// </summary>
-        /// <param name="Id">Id.</param>
-        /// <param name="Name">Name.</param>
-        /// <param name="LastUpdate">LastUpdate.</param>
-        /// <param name="Level">Level.</param>
-        public LightingZoneStatus(string Id = null, string Name = null, DateTime? LastUpdate = null, int? Level = null)
-        {
-            this.Id = Id;
-            this.Name = Name;
-            this.LastUpdate = LastUpdate;
-            this.Level = Level;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
@@ -77,7 +62,6 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="level")]
         public int? Level { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,8 +97,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LightingZoneStatus)obj);
+            return obj.GetType() == GetType() && Equals((LightingZoneStatus)obj);
         }
 
         /// <summary>
@@ -124,30 +107,29 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(LightingZoneStatus other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    Id == other.Id ||
+                    Id != null &&
+                    Id.Equals(other.Id)
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.Equals(other.Name)
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
                 ) && 
                 (
-                    this.LastUpdate == other.LastUpdate ||
-                    this.LastUpdate != null &&
-                    this.LastUpdate.Equals(other.LastUpdate)
+                    LastUpdate == other.LastUpdate ||
+                    LastUpdate != null &&
+                    LastUpdate.Equals(other.LastUpdate)
                 ) && 
                 (
-                    this.Level == other.Level ||
-                    this.Level != null &&
-                    this.Level.Equals(other.Level)
+                    Level == other.Level ||
+                    Level != null &&
+                    Level.Equals(other.Level)
                 );
         }
 
@@ -157,24 +139,24 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
-                if (this.LastUpdate != null)
-                    hash = hash * 59 + this.LastUpdate.GetHashCode();
-                if (this.Level != null)
-                    hash = hash * 59 + this.Level.GetHashCode();
-                return hash;
+                    if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                    if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                    if (LastUpdate != null)
+                    hashCode = hashCode * 59 + LastUpdate.GetHashCode();
+                    if (Level != null)
+                    hashCode = hashCode * 59 + Level.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(LightingZoneStatus left, LightingZoneStatus right)
         {
@@ -186,7 +168,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }

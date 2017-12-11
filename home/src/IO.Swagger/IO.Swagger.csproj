@@ -11,8 +11,8 @@
     <OutputType>Exe</OutputType>
     <PackageId>IO.Swagger</PackageId>
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
-    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
+
 
   <ItemGroup>
     <Compile Remove="wwwroot\**\*;node_modules;bower_components" />
@@ -23,12 +23,13 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
-    <PackageReference Include="Swashbuckle.SwaggerGen" Version="6.0.0-beta901" />
-    <PackageReference Include="Swashbuckle.SwaggerUi" Version="6.0.0-beta901" />
-  </ItemGroup>
 
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta1" />
+  </ItemGroup>
 
 
   <ItemGroup>

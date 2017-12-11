@@ -22,15 +22,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Primitives;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
-using Swashbuckle.SwaggerGen.Annotations;
+using IO.Swagger.Attributes;
 using IO.Swagger.Models;
 
 namespace IO.Swagger.Controllers
@@ -40,7 +42,6 @@ namespace IO.Swagger.Controllers
     /// </summary>
     public class ZWaveApiController : Controller
     { 
-
         /// <summary>
         /// 
         /// </summary>
@@ -48,8 +49,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">ok</response>
         [HttpGet]
         [Route("/josemottalopes/home-api/1.0.1/lightingSummary")]
+        [ValidateModelState]
         [SwaggerOperation("GetLightingSummary")]
-        [SwaggerResponse(200, type: typeof(LightingSummary))]
+        [SwaggerResponse(200, typeof(LightingSummary), "ok")]
         public virtual IActionResult GetLightingSummary()
         { 
             string exampleJson = null;
@@ -60,7 +62,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -69,8 +70,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">response</response>
         [HttpGet]
         [Route("/josemottalopes/home-api/1.0.1/lighting/switches/{deviceId}")]
+        [ValidateModelState]
         [SwaggerOperation("GetSwitchState")]
-        [SwaggerResponse(200, type: typeof(DeviceState))]
+        [SwaggerResponse(200, typeof(DeviceState), "response")]
         public virtual IActionResult GetSwitchState([FromRoute]string deviceId)
         { 
             string exampleJson = null;
@@ -81,7 +83,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -91,8 +92,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">response</response>
         [HttpPost]
         [Route("/josemottalopes/home-api/1.0.1/lighting/dimmers/{deviceId}/{value}")]
+        [ValidateModelState]
         [SwaggerOperation("SetDimmer")]
-        [SwaggerResponse(200, type: typeof(ApiResponse))]
+        [SwaggerResponse(200, typeof(ApiResponse), "response")]
         public virtual IActionResult SetDimmer([FromRoute]string deviceId, [FromRoute]int? value)
         { 
             string exampleJson = null;
@@ -102,7 +104,6 @@ namespace IO.Swagger.Controllers
             : default(ApiResponse);
             return new ObjectResult(example);
         }
-
 
         /// <summary>
         /// 
@@ -115,8 +116,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">response</response>
         [HttpPost]
         [Route("/josemottalopes/home-api/1.0.1/lighting/dimmers/{deviceId}/{value}/timer/{timeunit}")]
+        [ValidateModelState]
         [SwaggerOperation("SetDimmerTimer")]
-        [SwaggerResponse(200, type: typeof(ApiResponse))]
+        [SwaggerResponse(200, typeof(ApiResponse), "response")]
         public virtual IActionResult SetDimmerTimer([FromRoute]string deviceId, [FromRoute]int? value, [FromRoute]int? timeunit, [FromQuery]string units)
         { 
             string exampleJson = null;
@@ -127,7 +129,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -137,8 +138,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">response</response>
         [HttpPost]
         [Route("/josemottalopes/home-api/1.0.1/lighting/switches/{deviceId}/{value}")]
+        [ValidateModelState]
         [SwaggerOperation("SetSwitch")]
-        [SwaggerResponse(200, type: typeof(ApiResponse))]
+        [SwaggerResponse(200, typeof(ApiResponse), "response")]
         public virtual IActionResult SetSwitch([FromRoute]string deviceId, [FromRoute]string value)
         { 
             string exampleJson = null;
@@ -148,7 +150,6 @@ namespace IO.Swagger.Controllers
             : default(ApiResponse);
             return new ObjectResult(example);
         }
-
 
         /// <summary>
         /// 
@@ -160,8 +161,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">response</response>
         [HttpPost]
         [Route("/josemottalopes/home-api/1.0.1/lighting/switches/{deviceId}/{value}/timer/{minutes}")]
+        [ValidateModelState]
         [SwaggerOperation("SetSwitchTimer")]
-        [SwaggerResponse(200, type: typeof(ApiResponse))]
+        [SwaggerResponse(200, typeof(ApiResponse), "response")]
         public virtual IActionResult SetSwitchTimer([FromRoute]string deviceId, [FromRoute]string value, [FromRoute]int? minutes)
         { 
             string exampleJson = null;
