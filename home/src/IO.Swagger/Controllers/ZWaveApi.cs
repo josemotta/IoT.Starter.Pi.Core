@@ -48,7 +48,7 @@ namespace IO.Swagger.Controllers
         
         /// <response code="200">ok</response>
         [HttpGet]
-        [Route("/josemottalopes/home-api/1.0.1/lightingSummary")]
+        [Route("/motta/home-api/1.0.1/lightingSummary")]
         [ValidateModelState]
         [SwaggerOperation("GetLightingSummary")]
         [SwaggerResponse(200, typeof(LightingSummary), "ok")]
@@ -69,7 +69,7 @@ namespace IO.Swagger.Controllers
         /// <param name="deviceId"></param>
         /// <response code="200">response</response>
         [HttpGet]
-        [Route("/josemottalopes/home-api/1.0.1/lighting/switches/{deviceId}")]
+        [Route("/motta/home-api/1.0.1/lighting/switches/{deviceId}")]
         [ValidateModelState]
         [SwaggerOperation("GetSwitchState")]
         [SwaggerResponse(200, typeof(DeviceState), "response")]
@@ -91,7 +91,7 @@ namespace IO.Swagger.Controllers
         /// <param name="value"></param>
         /// <response code="200">response</response>
         [HttpPost]
-        [Route("/josemottalopes/home-api/1.0.1/lighting/dimmers/{deviceId}/{value}")]
+        [Route("/motta/home-api/1.0.1/lighting/dimmers/{deviceId}/{value}")]
         [ValidateModelState]
         [SwaggerOperation("SetDimmer")]
         [SwaggerResponse(200, typeof(ApiResponse), "response")]
@@ -115,7 +115,7 @@ namespace IO.Swagger.Controllers
         /// <param name="units"></param>
         /// <response code="200">response</response>
         [HttpPost]
-        [Route("/josemottalopes/home-api/1.0.1/lighting/dimmers/{deviceId}/{value}/timer/{timeunit}")]
+        [Route("/motta/home-api/1.0.1/lighting/dimmers/{deviceId}/{value}/timer/{timeunit}")]
         [ValidateModelState]
         [SwaggerOperation("SetDimmerTimer")]
         [SwaggerResponse(200, typeof(ApiResponse), "response")]
@@ -137,7 +137,7 @@ namespace IO.Swagger.Controllers
         /// <param name="value"></param>
         /// <response code="200">response</response>
         [HttpPost]
-        [Route("/josemottalopes/home-api/1.0.1/lighting/switches/{deviceId}/{value}")]
+        [Route("/motta/home-api/1.0.1/lighting/switches/{deviceId}/{value}")]
         [ValidateModelState]
         [SwaggerOperation("SetSwitch")]
         [SwaggerResponse(200, typeof(ApiResponse), "response")]
@@ -160,7 +160,7 @@ namespace IO.Swagger.Controllers
         /// <param name="minutes"></param>
         /// <response code="200">response</response>
         [HttpPost]
-        [Route("/josemottalopes/home-api/1.0.1/lighting/switches/{deviceId}/{value}/timer/{minutes}")]
+        [Route("/motta/home-api/1.0.1/lighting/switches/{deviceId}/{value}/timer/{minutes}")]
         [ValidateModelState]
         [SwaggerOperation("SetSwitchTimer")]
         [SwaggerResponse(200, typeof(ApiResponse), "response")]
