@@ -27,37 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// 
     /// </summary>
     [DataContract]
     public partial class ForecastTemperature :  IEquatable<ForecastTemperature>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ForecastTemperature" /> class.
-        /// </summary>
-        /// <param name="Low">Low.</param>
-        /// <param name="High">High.</param>
-        /// <param name="Morning">Morning.</param>
-        /// <param name="Day">Day.</param>
-        /// <param name="Evening">Evening.</param>
-        /// <param name="Night">Night.</param>
-        public ForecastTemperature(double? Low = null, double? High = null, double? Morning = null, double? Day = null, double? Evening = null, double? Night = null)
-        {
-            this.Low = Low;
-            this.High = High;
-            this.Morning = Morning;
-            this.Day = Day;
-            this.Evening = Evening;
-            this.Night = Night;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets Low
         /// </summary>
@@ -93,7 +74,6 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="night")]
         public double? Night { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -131,8 +111,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((ForecastTemperature)obj);
+            return obj.GetType() == GetType() && Equals((ForecastTemperature)obj);
         }
 
         /// <summary>
@@ -142,40 +121,39 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(ForecastTemperature other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Low == other.Low ||
-                    this.Low != null &&
-                    this.Low.Equals(other.Low)
+                    Low == other.Low ||
+                    Low != null &&
+                    Low.Equals(other.Low)
                 ) && 
                 (
-                    this.High == other.High ||
-                    this.High != null &&
-                    this.High.Equals(other.High)
+                    High == other.High ||
+                    High != null &&
+                    High.Equals(other.High)
                 ) && 
                 (
-                    this.Morning == other.Morning ||
-                    this.Morning != null &&
-                    this.Morning.Equals(other.Morning)
+                    Morning == other.Morning ||
+                    Morning != null &&
+                    Morning.Equals(other.Morning)
                 ) && 
                 (
-                    this.Day == other.Day ||
-                    this.Day != null &&
-                    this.Day.Equals(other.Day)
+                    Day == other.Day ||
+                    Day != null &&
+                    Day.Equals(other.Day)
                 ) && 
                 (
-                    this.Evening == other.Evening ||
-                    this.Evening != null &&
-                    this.Evening.Equals(other.Evening)
+                    Evening == other.Evening ||
+                    Evening != null &&
+                    Evening.Equals(other.Evening)
                 ) && 
                 (
-                    this.Night == other.Night ||
-                    this.Night != null &&
-                    this.Night.Equals(other.Night)
+                    Night == other.Night ||
+                    Night != null &&
+                    Night.Equals(other.Night)
                 );
         }
 
@@ -185,28 +163,28 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Low != null)
-                    hash = hash * 59 + this.Low.GetHashCode();
-                if (this.High != null)
-                    hash = hash * 59 + this.High.GetHashCode();
-                if (this.Morning != null)
-                    hash = hash * 59 + this.Morning.GetHashCode();
-                if (this.Day != null)
-                    hash = hash * 59 + this.Day.GetHashCode();
-                if (this.Evening != null)
-                    hash = hash * 59 + this.Evening.GetHashCode();
-                if (this.Night != null)
-                    hash = hash * 59 + this.Night.GetHashCode();
-                return hash;
+                    if (Low != null)
+                    hashCode = hashCode * 59 + Low.GetHashCode();
+                    if (High != null)
+                    hashCode = hashCode * 59 + High.GetHashCode();
+                    if (Morning != null)
+                    hashCode = hashCode * 59 + Morning.GetHashCode();
+                    if (Day != null)
+                    hashCode = hashCode * 59 + Day.GetHashCode();
+                    if (Evening != null)
+                    hashCode = hashCode * 59 + Evening.GetHashCode();
+                    if (Night != null)
+                    hashCode = hashCode * 59 + Night.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(ForecastTemperature left, ForecastTemperature right)
         {
@@ -218,7 +196,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }

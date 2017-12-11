@@ -27,71 +27,23 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// status of a single zone
     /// </summary>
     [DataContract]
     public partial class TemperatueZoneStatus :  IEquatable<TemperatueZoneStatus>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TemperatueZoneStatus" /> class.
-        /// </summary>
-        /// <param name="Id">the unique identifier for the zone (required).</param>
-        /// <param name="Name">the name of the zone.</param>
-        /// <param name="Value">the temperature in the zone (required).</param>
-        /// <param name="Units">the temperature units (default to &quot;fahrenheit&quot;).</param>
-        /// <param name="Timestamp">the timestamp when the temperature was measured (required).</param>
-        public TemperatueZoneStatus(string Id = null, string Name = null, double? Value = null, string Units = null, DateTime? Timestamp = null)
-        {
-            // to ensure "Id" is required (not null)
-            if (Id == null)
-            {
-                throw new InvalidDataException("Id is a required property for TemperatueZoneStatus and cannot be null");
-            }
-            else
-            {
-                this.Id = Id;
-            }
-            // to ensure "Value" is required (not null)
-            if (Value == null)
-            {
-                throw new InvalidDataException("Value is a required property for TemperatueZoneStatus and cannot be null");
-            }
-            else
-            {
-                this.Value = Value;
-            }
-            // to ensure "Timestamp" is required (not null)
-            if (Timestamp == null)
-            {
-                throw new InvalidDataException("Timestamp is a required property for TemperatueZoneStatus and cannot be null");
-            }
-            else
-            {
-                this.Timestamp = Timestamp;
-            }
-            this.Name = Name;
-            // use default value if no "Units" provided
-            if (Units == null)
-            {
-                this.Units = "fahrenheit";
-            }
-            else
-            {
-                this.Units = Units;
-            }
-            
-        }
-
+    { 
         /// <summary>
         /// the unique identifier for the zone
         /// </summary>
         /// <value>the unique identifier for the zone</value>
+        [Required]
         [DataMember(Name="id")]
         public string Id { get; set; }
 
@@ -106,23 +58,42 @@ namespace IO.Swagger.Models
         /// the temperature in the zone
         /// </summary>
         /// <value>the temperature in the zone</value>
+        [Required]
         [DataMember(Name="value")]
         public double? Value { get; set; }
+        /// <summary>
+        /// the temperature units
+        /// </summary>
+        /// <value>the temperature units</value>
+        public enum UnitsEnum
+        { 
+            /// <summary>
+            /// Enum CelciusEnum for "celcius"
+            /// </summary>
+            [EnumMember(Value = "celcius")]
+            CelciusEnum = 1,
+            
+            /// <summary>
+            /// Enum FahrenheitEnum for "fahrenheit"
+            /// </summary>
+            [EnumMember(Value = "fahrenheit")]
+            FahrenheitEnum = 2
+        }
 
         /// <summary>
         /// the temperature units
         /// </summary>
         /// <value>the temperature units</value>
         [DataMember(Name="units")]
-        public string Units { get; set; }
+        public UnitsEnum? Units { get; set; }
 
         /// <summary>
         /// the timestamp when the temperature was measured
         /// </summary>
         /// <value>the timestamp when the temperature was measured</value>
+        [Required]
         [DataMember(Name="timestamp")]
         public DateTime? Timestamp { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -159,8 +130,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((TemperatueZoneStatus)obj);
+            return obj.GetType() == GetType() && Equals((TemperatueZoneStatus)obj);
         }
 
         /// <summary>
@@ -170,35 +140,34 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(TemperatueZoneStatus other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    Id == other.Id ||
+                    Id != null &&
+                    Id.Equals(other.Id)
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.Equals(other.Name)
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
                 ) && 
                 (
-                    this.Value == other.Value ||
-                    this.Value != null &&
-                    this.Value.Equals(other.Value)
+                    Value == other.Value ||
+                    Value != null &&
+                    Value.Equals(other.Value)
                 ) && 
                 (
-                    this.Units == other.Units ||
-                    this.Units != null &&
-                    this.Units.Equals(other.Units)
+                    Units == other.Units ||
+                    Units != null &&
+                    Units.Equals(other.Units)
                 ) && 
                 (
-                    this.Timestamp == other.Timestamp ||
-                    this.Timestamp != null &&
-                    this.Timestamp.Equals(other.Timestamp)
+                    Timestamp == other.Timestamp ||
+                    Timestamp != null &&
+                    Timestamp.Equals(other.Timestamp)
                 );
         }
 
@@ -208,26 +177,26 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
-                if (this.Value != null)
-                    hash = hash * 59 + this.Value.GetHashCode();
-                if (this.Units != null)
-                    hash = hash * 59 + this.Units.GetHashCode();
-                if (this.Timestamp != null)
-                    hash = hash * 59 + this.Timestamp.GetHashCode();
-                return hash;
+                    if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                    if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                    if (Value != null)
+                    hashCode = hashCode * 59 + Value.GetHashCode();
+                    if (Units != null)
+                    hashCode = hashCode * 59 + Units.GetHashCode();
+                    if (Timestamp != null)
+                    hashCode = hashCode * 59 + Timestamp.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(TemperatueZoneStatus left, TemperatueZoneStatus right)
         {
@@ -239,7 +208,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }

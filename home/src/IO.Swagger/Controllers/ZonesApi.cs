@@ -22,15 +22,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Primitives;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
-using Swashbuckle.SwaggerGen.Annotations;
+using IO.Swagger.Attributes;
 using IO.Swagger.Models;
 
 namespace IO.Swagger.Controllers
@@ -40,7 +42,6 @@ namespace IO.Swagger.Controllers
     /// </summary>
     public class ZonesApiController : Controller
     { 
-
         /// <summary>
         /// 
         /// </summary>
@@ -48,8 +49,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">ok</response>
         [HttpGet]
         [Route("/josemottalopes/home-api/1.0.1/zones")]
+        [ValidateModelState]
         [SwaggerOperation("GetZones")]
-        [SwaggerResponse(200, type: typeof(List<string>))]
+        [SwaggerResponse(200, typeof(List<string>), "ok")]
         public virtual IActionResult GetZones()
         { 
             string exampleJson = null;
@@ -60,7 +62,6 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -69,6 +70,7 @@ namespace IO.Swagger.Controllers
         /// <response code="200">ok</response>
         [HttpGet]
         [Route("/josemottalopes/home-api/1.0.1/zones/{zoneId}/quiet")]
+        [ValidateModelState]
         [SwaggerOperation("QuietZone")]
         public virtual void QuietZone([FromRoute]string zoneId)
         { 

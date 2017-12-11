@@ -1,15 +1,17 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
 
 namespace IO.Swagger
 {
+    /// <summary>
+    /// Program
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Main
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
@@ -17,10 +19,10 @@ namespace IO.Swagger
                 {
                     // options.ThreadCount = 4;
                     // options.UseHttps("cert.pfx", "certpassword");
-                    // options.NoDelay = true;
-                    // options.UseConnectionLogging();
+                    //options.NoDelay = true;
+                    //options.UseConnectionLogging();
                 })
-                .UseUrls("http://+:5010" /*, "https://+:5011" */)
+                .UseUrls("http://+:5000" /*, "https://+:5001" */)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()

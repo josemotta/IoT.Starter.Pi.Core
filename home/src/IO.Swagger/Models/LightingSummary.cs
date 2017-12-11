@@ -27,29 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// ok
     /// </summary>
     [DataContract]
     public partial class LightingSummary :  IEquatable<LightingSummary>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LightingSummary" /> class.
-        /// </summary>
-        /// <param name="Zones">Zones.</param>
-        /// <param name="ZoneStatus">ZoneStatus.</param>
-        public LightingSummary(List<LightingZone> Zones = null, List<LightingZoneStatus> ZoneStatus = null)
-        {
-            this.Zones = Zones;
-            this.ZoneStatus = ZoneStatus;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets Zones
         /// </summary>
@@ -61,7 +50,6 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="zoneStatus")]
         public List<LightingZoneStatus> ZoneStatus { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,8 +83,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((LightingSummary)obj);
+            return obj.GetType() == GetType() && Equals((LightingSummary)obj);
         }
 
         /// <summary>
@@ -106,20 +93,19 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(LightingSummary other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Zones == other.Zones ||
-                    this.Zones != null &&
-                    this.Zones.SequenceEqual(other.Zones)
+                    Zones == other.Zones ||
+                    Zones != null &&
+                    Zones.SequenceEqual(other.Zones)
                 ) && 
                 (
-                    this.ZoneStatus == other.ZoneStatus ||
-                    this.ZoneStatus != null &&
-                    this.ZoneStatus.SequenceEqual(other.ZoneStatus)
+                    ZoneStatus == other.ZoneStatus ||
+                    ZoneStatus != null &&
+                    ZoneStatus.SequenceEqual(other.ZoneStatus)
                 );
         }
 
@@ -129,20 +115,20 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Zones != null)
-                    hash = hash * 59 + this.Zones.GetHashCode();
-                if (this.ZoneStatus != null)
-                    hash = hash * 59 + this.ZoneStatus.GetHashCode();
-                return hash;
+                    if (Zones != null)
+                    hashCode = hashCode * 59 + Zones.GetHashCode();
+                    if (ZoneStatus != null)
+                    hashCode = hashCode * 59 + ZoneStatus.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(LightingSummary left, LightingSummary right)
         {
@@ -154,7 +140,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }

@@ -27,31 +27,18 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
-{
+{ 
     /// <summary>
     /// 
     /// </summary>
     [DataContract]
     public partial class WeatherForecast :  IEquatable<WeatherForecast>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WeatherForecast" /> class.
-        /// </summary>
-        /// <param name="Summary">Summary.</param>
-        /// <param name="Description">Description.</param>
-        /// <param name="Icon">Icon.</param>
-        public WeatherForecast(string Summary = null, string Description = null, string Icon = null)
-        {
-            this.Summary = Summary;
-            this.Description = Description;
-            this.Icon = Icon;
-            
-        }
-
+    { 
         /// <summary>
         /// Gets or Sets Summary
         /// </summary>
@@ -69,7 +56,6 @@ namespace IO.Swagger.Models
         /// </summary>
         [DataMember(Name="icon")]
         public string Icon { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -104,8 +90,7 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((WeatherForecast)obj);
+            return obj.GetType() == GetType() && Equals((WeatherForecast)obj);
         }
 
         /// <summary>
@@ -115,25 +100,24 @@ namespace IO.Swagger.Models
         /// <returns>Boolean</returns>
         public bool Equals(WeatherForecast other)
         {
-
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    this.Summary == other.Summary ||
-                    this.Summary != null &&
-                    this.Summary.Equals(other.Summary)
+                    Summary == other.Summary ||
+                    Summary != null &&
+                    Summary.Equals(other.Summary)
                 ) && 
                 (
-                    this.Description == other.Description ||
-                    this.Description != null &&
-                    this.Description.Equals(other.Description)
+                    Description == other.Description ||
+                    Description != null &&
+                    Description.Equals(other.Description)
                 ) && 
                 (
-                    this.Icon == other.Icon ||
-                    this.Icon != null &&
-                    this.Icon.Equals(other.Icon)
+                    Icon == other.Icon ||
+                    Icon != null &&
+                    Icon.Equals(other.Icon)
                 );
         }
 
@@ -143,22 +127,22 @@ namespace IO.Swagger.Models
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
+                var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Summary != null)
-                    hash = hash * 59 + this.Summary.GetHashCode();
-                if (this.Description != null)
-                    hash = hash * 59 + this.Description.GetHashCode();
-                if (this.Icon != null)
-                    hash = hash * 59 + this.Icon.GetHashCode();
-                return hash;
+                    if (Summary != null)
+                    hashCode = hashCode * 59 + Summary.GetHashCode();
+                    if (Description != null)
+                    hashCode = hashCode * 59 + Description.GetHashCode();
+                    if (Icon != null)
+                    hashCode = hashCode * 59 + Icon.GetHashCode();
+                return hashCode;
             }
         }
 
         #region Operators
+        #pragma warning disable 1591
 
         public static bool operator ==(WeatherForecast left, WeatherForecast right)
         {
@@ -170,7 +154,7 @@ namespace IO.Swagger.Models
             return !Equals(left, right);
         }
 
+        #pragma warning restore 1591
         #endregion Operators
-
     }
 }
