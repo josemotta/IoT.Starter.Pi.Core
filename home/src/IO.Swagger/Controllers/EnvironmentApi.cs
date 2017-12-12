@@ -1,5 +1,5 @@
 /*
- * home-api
+ * home
  *
  * The API for the Home Starter project
  *
@@ -49,7 +49,7 @@ namespace IO.Swagger.Controllers
         /// <param name="days"></param>
         /// <response code="200">the forecast</response>
         [HttpGet]
-        [Route("/motta/home-api/1.0.1/temperature/forecast/{days}")]
+        [Route("/motta/home/1.0.1/temperature/forecast/{days}")]
         [ValidateModelState]
         [SwaggerOperation("GetForecast")]
         [SwaggerResponse(200, typeof(ForecastResponse), "the forecast")]
@@ -70,7 +70,7 @@ namespace IO.Swagger.Controllers
         /// <param name="zoneId"></param>
         /// <response code="200">heater state</response>
         [HttpGet]
-        [Route("/motta/home-api/1.0.1/temperature/{zoneId}/heater")]
+        [Route("/motta/home/1.0.1/temperature/{zoneId}/heater")]
         [ValidateModelState]
         [SwaggerOperation("GetHeaterState")]
         [SwaggerResponse(200, typeof(HeaterState), "heater state")]
@@ -91,7 +91,7 @@ namespace IO.Swagger.Controllers
         /// <param name="zoneId"></param>
         /// <response code="200">Zone temperature</response>
         [HttpGet]
-        [Route("/motta/home-api/1.0.1/temperature/{zoneId}")]
+        [Route("/motta/home/1.0.1/temperature/{zoneId}")]
         [ValidateModelState]
         [SwaggerOperation("GetZoneTemperature")]
         [SwaggerResponse(200, typeof(TemperatueZoneStatus), "Zone temperature")]
@@ -113,7 +113,7 @@ namespace IO.Swagger.Controllers
         /// <param name="state"></param>
         /// <response code="200">Status of the operation</response>
         [HttpPost]
-        [Route("/motta/home-api/1.0.1/temperature/{zoneId}/heater/{state}")]
+        [Route("/motta/home/1.0.1/temperature/{zoneId}/heater/{state}")]
         [ValidateModelState]
         [SwaggerOperation("SetHeaterState")]
         [SwaggerResponse(200, typeof(ApiResponse), "Status of the operation")]
@@ -133,7 +133,7 @@ namespace IO.Swagger.Controllers
         
         /// <response code="200">ok</response>
         [HttpGet]
-        [Route("/motta/home-api/1.0.1/temperature")]
+        [Route("/motta/home/1.0.1/temperature")]
         [ValidateModelState]
         [SwaggerOperation("TemperatureSummary")]
         [SwaggerResponse(200, typeof(TemperatureSummary), "ok")]

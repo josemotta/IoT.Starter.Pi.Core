@@ -1,5 +1,5 @@
 /*
- * home-api
+ * home
  *
  * The API for the Home Starter project
  *
