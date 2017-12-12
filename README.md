@@ -58,7 +58,21 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 - Go back to x64 machine
 - Access home-web and home-ui via any browser  
 
+#### Running both images at Raspberry Pi
 
+	alias yhomeui='docker run --privileged -p 80:80 -d josemottalopes/home-ui:latest'
+	alias yhomeweb='docker run --privileged -p 5010:5010 -d josemottalopes/home-web:latest'
 
+	root@lumi:~# yhomeui
+	yhomeweb74342cf8989ad22a865ae18f91baf50a08a72f7c62ff54618f96f653f9aae65f
+	root@lumi:~# yhomeweb
+	c8a973db87c04543d305fdea07259a35238aae13c5d4696a8e7a178b1d780f01
+	root@lumi:~# docker ps
+	CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                            NAMES
+	c8a973db87c0        josemottalopes/home-web:latest   "dotnet IO.Swagger..."   10 seconds ago      Up 7 seconds        80/tcp, 0.0.0.0:5010->5010/tcp   flamboyant_payne
+	74342cf8989a        josemottalopes/home-ui:latest    "dotnet Home.UI.dll"     24 seconds ago      Up 11 seconds       0.0.0.0:80->80/tcp               kind_engelbart
+	root@lumi:~# 
 
+Checking at the browser, we see home-web home-ui projects running.
 
+![](https://i.imgur.com/VswT4VT.png)
