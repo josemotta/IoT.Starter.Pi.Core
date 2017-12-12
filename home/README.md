@@ -1,7 +1,5 @@
 # Docker
 
-## Building
-
 ### Generating code for x64 with Windows 10
 
 #### docker-compose.yml  
