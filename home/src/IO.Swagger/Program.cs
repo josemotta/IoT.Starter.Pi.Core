@@ -22,7 +22,7 @@ namespace IO.Swagger
                     //options.NoDelay = true;
                     //options.UseConnectionLogging();
                 })
-                .UseUrls("http://+:5000" /*, "https://+:5001" */)
+                .UseUrls("http://+:5010" /*, "https://+:5011" */)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
