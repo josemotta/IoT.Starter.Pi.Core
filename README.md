@@ -2,7 +2,7 @@
 
 ### IoT Starter Raspberry Pi Core
 
-More details about [IoT Starter](https://github.com/josemotta/IoT.Starter "IoT Starter"), please see articles and repos below:
+For more details about [IoT Starter](https://github.com/josemotta/IoT.Starter "IoT Starter"), please see articles and repos below:
 
 [IoT Starter Core for Netduino Plus 2](https://www.codeproject.com/Articles/1122233/IoT-Starter-Core-for-Netduino-Plus "IoT Starter Core for Netduino Plus 2")  
 https://github.com/josemotta/IoT.Starter  
