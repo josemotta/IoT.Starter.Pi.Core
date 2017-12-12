@@ -73,6 +73,6 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 	74342cf8989a        josemottalopes/home-ui:latest    "dotnet Home.UI.dll"     24 seconds ago      Up 11 seconds       0.0.0.0:80->80/tcp               kind_engelbart
 	root@lumi:~# 
 
-Checking at the browser, we see home-web home-ui projects running.
+Checking at the browser, we see both home-web and home-ui projects running at Raspberry Pi with Linux.
 
 ![](https://i.imgur.com/VswT4VT.png)
