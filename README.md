@@ -28,7 +28,7 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 - Web service stub is automatically generated
 - Swaggerhub is configured to push code to 'swag' branch at Github 
 
-#### Development at x64 with Windows 10:
+## Development at x64 with Windows 10:
 
 - Install Docker
 
@@ -47,18 +47,18 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 - Add multi-stage docker build for web ui  
 - Push Docker image to cloud: home-ui   
 
-#### Deployment at Raspberry Pi with Linux (hostname "rpi")
+## Deployment at Raspberry Pi with Linux (hostname "rpi")
 
 - Raspbian GNU/Linux 9.1 (stretch) 
 - Install Docker  
 - Run both Docker images for home-web and home-ui
 
-#### Testing
+## Testing
  
 - Go back to x64 machine
 - Access home-web and home-ui via any browser  
 
-#### Running both images at Raspberry Pi
+## Running both images at Raspberry Pi
 
 	alias yhomeui='docker run --privileged -p 80:80 -d josemottalopes/home-ui:latest'
 	alias yhomeweb='docker run --privileged -p 5010:5010 -d josemottalopes/home-web:latest'
