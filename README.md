@@ -76,3 +76,21 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 Checking at the browser, we see both home-web and home-ui projects running at Raspberry Pi with Linux.
 
 ![](https://i.imgur.com/VswT4VT.png)
+
+## Upgrading the API
+
+Changes to API are done editing the API master file at Swaggerhub. In order to smoothly update the project, following configuration should be done, selecting the proper repo and a new branch "swag" to store the changes.
+
+![](https://i.imgur.com/tSo7Cui.png)
+
+Please note that it is necessary to allow full control over some folders, including models, controllers and wwwroot, as shown below. 
+
+![](https://i.imgur.com/OrjIqma.png)
+
+The generated files may include some garbage that should be cleaned properly, including some .json and .sln files from previous Visual Studio versions.
+
+For time to time, I noticed some breaking changes at Swaggerhub generated code. In some cases, a special conversion to ASP.Net Core 2.0 maybe done automatically using Visual Studio (I used Community 2017 Preview2), in order to adjust solution files, libraries, etc.
+
+Also docker support use the Visual Studio, using menu "Add Docker support" for the solution. Then docker-compose and dockerfile are adjusted, properly pulling the strings for a smooth operation at Windows x64 machine.
+
+
