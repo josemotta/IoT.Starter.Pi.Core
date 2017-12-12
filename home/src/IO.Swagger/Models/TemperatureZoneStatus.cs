@@ -37,7 +37,7 @@ namespace IO.Swagger.Models
     /// status of a single zone
     /// </summary>
     [DataContract]
-    public partial class TemperatueZoneStatus :  IEquatable<TemperatueZoneStatus>
+    public partial class TemperatureZoneStatus :  IEquatable<TemperatureZoneStatus>
     { 
         /// <summary>
         /// the unique identifier for the zone
@@ -102,7 +102,7 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TemperatueZoneStatus {\n");
+            sb.Append("class TemperatureZoneStatus {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
@@ -130,15 +130,15 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((TemperatueZoneStatus)obj);
+            return obj.GetType() == GetType() && Equals((TemperatureZoneStatus)obj);
         }
 
         /// <summary>
-        /// Returns true if TemperatueZoneStatus instances are equal
+        /// Returns true if TemperatureZoneStatus instances are equal
         /// </summary>
-        /// <param name="other">Instance of TemperatueZoneStatus to be compared</param>
+        /// <param name="other">Instance of TemperatureZoneStatus to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TemperatueZoneStatus other)
+        public bool Equals(TemperatureZoneStatus other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -198,12 +198,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(TemperatueZoneStatus left, TemperatueZoneStatus right)
+        public static bool operator ==(TemperatureZoneStatus left, TemperatureZoneStatus right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(TemperatueZoneStatus left, TemperatueZoneStatus right)
+        public static bool operator !=(TemperatureZoneStatus left, TemperatureZoneStatus right)
         {
             return !Equals(left, right);
         }
