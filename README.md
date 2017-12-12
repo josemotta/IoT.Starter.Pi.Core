@@ -30,7 +30,7 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 
 - Install Docker
 
-**Web Service**
+	**Web Service**
 
 - Pull Swaggerhub generated code from github
 - Upgrade to .NET Core 2 framework and Docker support
@@ -39,7 +39,7 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 - Compiles at x64 machine for linux-arm framework  
 - Push Docker image to cloud: home-web  
 
-**Web UI**
+	**Web UI**
 
 - Generate another project based on default razor pages app
 - Add multi-stage docker build for web ui  
