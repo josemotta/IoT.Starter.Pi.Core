@@ -1,6 +1,6 @@
 # IoT.Starter.Pi.Core
 
-### Home Intelligence with Raspberry Pi
+### IoT Starter Raspberry Pi Core
 
 More details about [IoT Starter](https://github.com/josemotta/IoT.Starter "IoT Starter"), please see articles and repos below:
 
