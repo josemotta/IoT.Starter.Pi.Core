@@ -91,6 +91,6 @@ The generated files may include some garbage that should be cleaned properly, in
 
 For time to time, I noticed some breaking changes at Swaggerhub generated code. In some cases, a special conversion to ASP.Net Core 2.0 maybe done automatically using Visual Studio (I used Community 2017 Preview2), in order to adjust solution files, libraries, etc.
 
-Also docker support use the Visual Studio, using menu "Add Docker support" for the solution. Then docker-compose and dockerfile are adjusted, properly pulling the strings for a smooth operation at Windows x64 machine.
+Use the Visual Studio to setup Docker, apply menu "Add Docker support" for the solution. Then docker-compose and dockerfile maybe adjusted, properly pulling the strings for a smooth operation at Windows x64 machine.
 
 
