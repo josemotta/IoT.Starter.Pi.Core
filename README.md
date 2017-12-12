@@ -7,6 +7,7 @@ More details about [IoT Starter](https://github.com/josemotta/IoT.Starter "IoT S
 [IoT Starter Core for Netduino Plus 2](https://www.codeproject.com/Articles/1122233/IoT-Starter-Core-for-Netduino-Plus "IoT Starter Core for Netduino Plus 2")  
 https://github.com/josemotta/IoT.Starter  
 https://github.com/josemotta/IoT.Starter.Np2.Core  
+https://github.com/josemotta/IoT.Starter.Np2.Thing  
 https://github.com/josemotta/IoT.Home.Netduino  
 
 
