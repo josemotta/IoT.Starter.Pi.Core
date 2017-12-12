@@ -94,14 +94,14 @@ namespace IO.Swagger.Controllers
         [Route("/motta/home/1.0.1/temperature/{zoneId}")]
         [ValidateModelState]
         [SwaggerOperation("GetZoneTemperature")]
-        [SwaggerResponse(200, typeof(TemperatueZoneStatus), "Zone temperature")]
+        [SwaggerResponse(200, typeof(TemperatureZoneStatus), "Zone temperature")]
         public virtual IActionResult GetZoneTemperature([FromRoute]string zoneId)
         { 
             string exampleJson = null;
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<TemperatueZoneStatus>(exampleJson)
-            : default(TemperatueZoneStatus);
+            ? JsonConvert.DeserializeObject<TemperatureZoneStatus>(exampleJson)
+            : default(TemperatureZoneStatus);
             return new ObjectResult(example);
         }
 

@@ -49,7 +49,7 @@ namespace IO.Swagger.Models
         /// Gets or Sets ZoneStatus
         /// </summary>
         [DataMember(Name="zoneStatus")]
-        public List<TemperatueZoneStatus> ZoneStatus { get; set; }
+        public List<TemperatureZoneStatus> ZoneStatus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
