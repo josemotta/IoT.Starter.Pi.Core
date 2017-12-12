@@ -89,7 +89,7 @@ Please note that it is necessary to allow full control over some folders, includ
 
 The generated files may include some garbage that should be cleaned properly, including some .json and .sln files from previous Visual Studio versions.
 
-For time to time, I noticed some breaking changes at Swaggerhub generated code. In some cases, a special conversion to ASP.Net Core 2.0 maybe done automatically using Visual Studio (I used Community 2017 Preview2), in order to adjust solution files, libraries, etc.
+For time to time, I noticed some breaking changes at Swaggerhub generated code. In some cases, a special conversion to ASP.Net Core 2.0 maybe done automatically using Visual Studio (I used Community 2017 Preview2). In this case, change the Output Folder to "home2", in order to allow VS to adjust automatically the solution files, libraries, etc. Then bring the changes to "home" in another safe step.
 
 Use the Visual Studio to setup Docker, apply menu "Add Docker support" for the solution. Then docker-compose and dockerfile maybe adjusted, properly pulling the strings for a smooth operation at Windows x64 machine.
 
