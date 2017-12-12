@@ -22,13 +22,13 @@ Starting from a Swagger API definition, an ASP.NET Core Web API is developed usi
 
 A multi-stage docker image build is accomplished at the speedy Windows x64 machine, generating code for the linux-arm. The same VS solution include separated projects for the web server and web UI. Both docker images are pushed to the cloud and then pulled back into a Raspberry Pi with Raspbian 9.1 stretch installed.
 
-#### Modeling:
+### Modeling:
  
 - API is designed at Swagger Hub   
 - Web service stub is automatically generated
 - Swaggerhub is configured to push code to 'swag' branch at Github 
 
-## Development at x64 with Windows 10:
+### Development at x64 with Windows 10:
 
 - Install Docker
 
@@ -47,13 +47,13 @@ A multi-stage docker image build is accomplished at the speedy Windows x64 machi
 - Add multi-stage docker build for web ui  
 - Push Docker image to cloud: home-ui   
 
-## Deployment at Raspberry Pi with Linux (hostname "rpi")
+### Deployment at Raspberry Pi with Linux (hostname "rpi")
 
 - Raspbian GNU/Linux 9.1 (stretch) 
 - Install Docker  
 - Run both Docker images for home-web and home-ui
 
-## Testing
+### Testing
  
 - Go back to x64 machine
 - Access home-web and home-ui via any browser  
