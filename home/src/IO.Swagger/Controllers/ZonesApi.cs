@@ -48,7 +48,7 @@ namespace IO.Swagger.Controllers
         
         /// <response code="200">ok</response>
         [HttpGet]
-        [Route("/motta/home-api/1.0.1/zones")]
+        [Route("/motta/home/1.0.1/zones")]
         [ValidateModelState]
         [SwaggerOperation("GetZones")]
         [SwaggerResponse(200, typeof(List<string>), "ok")]
@@ -69,7 +69,7 @@ namespace IO.Swagger.Controllers
         /// <param name="zoneId"></param>
         /// <response code="200">ok</response>
         [HttpGet]
-        [Route("/motta/home-api/1.0.1/zones/{zoneId}/quiet")]
+        [Route("/motta/home/1.0.1/zones/{zoneId}/quiet")]
         [ValidateModelState]
         [SwaggerOperation("QuietZone")]
         public virtual void QuietZone([FromRoute]string zoneId)
