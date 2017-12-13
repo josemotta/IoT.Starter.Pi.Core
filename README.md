@@ -97,7 +97,7 @@ The commands start clearing all docker containers and images:
 	Deleted: sha256:f96ade99e9d01f22ce8fc2d4371da8e3b1ae01fe4a1654748f32338224341dc2
 	Deleted: sha256:ccd48fa5ba354572eff0c0cf514f83187f859b2199ebcb8bf02573642f8186cb
 
-Then all projects are started, downloading images from DockerHub to Raspberry Pi. You can notice the second project share five images with first project and they don't need to be downloaded again.
+Then all projects are started, downloading images from DockerHub to Raspberry Pi. You can notice the home-ui project share four images with home-web project and they don't need to be downloaded again.
 
 	root@lumi:~# alias
 	alias yhomeui='docker run --privileged -p 80:80 -d josemottalopes/home-ui:latest'
