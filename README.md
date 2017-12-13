@@ -1,6 +1,6 @@
 # IoT.Starter.Pi.Core
 
-Published at [Code Project](https://www.codeproject.com/Articles/1220930/IoT-Starter-Raspberry-Pi-Core)
+Also published at [Code Project](https://www.codeproject.com/Articles/1220930/IoT-Starter-Raspberry-Pi-Core)
 
 ### IoT Starter Raspberry Pi Core
 
