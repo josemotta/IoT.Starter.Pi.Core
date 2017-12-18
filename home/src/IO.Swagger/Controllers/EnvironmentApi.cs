@@ -34,6 +34,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
 using IO.Swagger.Attributes;
 using IO.Swagger.Models;
+using System.IO;
 
 namespace IO.Swagger.Controllers
 { 
@@ -97,11 +98,35 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(200, typeof(TemperatureZoneStatus), "Zone temperature")]
         public virtual IActionResult GetZoneTemperature([FromRoute]string zoneId)
         { 
-            string exampleJson = null;
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<TemperatureZoneStatus>(exampleJson)
-            : default(TemperatureZoneStatus);
+            //string exampleJson = null;
+            TemperatureZoneStatus tzs = null;
+
+            DirectoryInfo devicesDir = new DirectoryInfo("/sys/bus/w1/devices");
+
+            foreach (var deviceDir in devicesDir.EnumerateDirectories("28*"))
+            {
+                var w1slavetext =
+                    deviceDir.GetFiles("w1_slave").FirstOrDefault().OpenText().ReadToEnd();
+                string temptext =
+                    w1slavetext.Split(new string[] { "t=" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                string name = deviceDir.Name;
+
+                tzs = new TemperatureZoneStatus
+                {
+                    Id = zoneId,
+                    Name = deviceDir.Name,
+                    Value = double.Parse(temptext) / 1000,
+                    Units = TemperatureZoneStatus.UnitsEnum.CelsiusEnum,
+                    Timestamp = DateTime.Now
+                };
+            }
+
+            //var example = exampleJson != null
+            //? JsonConvert.DeserializeObject<TemperatureZoneStatus>(exampleJson)
+            //: default(TemperatureZoneStatus);
+
+            var example = tzs ?? default(TemperatureZoneStatus);
+
             return new ObjectResult(example);
         }
 
