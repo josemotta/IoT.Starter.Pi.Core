@@ -97,8 +97,17 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("GetZoneTemperature")]
         [SwaggerResponse(200, typeof(TemperatureZoneStatus), "Zone temperature")]
         public virtual IActionResult GetZoneTemperature([FromRoute]string zoneId)
-        { 
+        {
             //string exampleJson = null;
+            //var example = exampleJson != null
+            //? JsonConvert.DeserializeObject<TemperatureZoneStatus>(exampleJson)
+            //: default(TemperatureZoneStatus);
+
+            // This is a TEST
+            // Since there is a single Temperature Sensor DS18B20 configured for 1-wire
+            // And that Linux activated the proper module
+            // All zones will return the same value measured by DS18B20
+            // TODO: test the CRC check for a YES 
             TemperatureZoneStatus tzs = null;
 
             DirectoryInfo devicesDir = new DirectoryInfo("/sys/bus/w1/devices");
@@ -120,10 +129,6 @@ namespace IO.Swagger.Controllers
                     Timestamp = DateTime.Now
                 };
             }
-
-            //var example = exampleJson != null
-            //? JsonConvert.DeserializeObject<TemperatureZoneStatus>(exampleJson)
-            //: default(TemperatureZoneStatus);
 
             var example = tzs ?? default(TemperatureZoneStatus);
 
